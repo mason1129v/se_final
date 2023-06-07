@@ -5,11 +5,12 @@ $(function () {
    */
   'use strict';
   /*自訂*/
+  console.log(revenueAmountList);
   var data1 = {
-    labels: ["1月", "2月", "3月", "4月", "5月", "6月"],
+    labels: ["1月", "2月", "3月", "4月", "5月"],
     datasets: [{
       label: '# of Votes',
-      data: [8000, 12000, 15000, 14000, 16000, 18000],
+      data: revenueAmountList,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
