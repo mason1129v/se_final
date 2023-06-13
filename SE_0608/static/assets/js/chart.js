@@ -6,6 +6,8 @@ $(function () {
   'use strict';
   /*自訂*/
   console.log(revenueAmountList);
+  console.log(RoundedPercentages);
+  console.log(CategoriesList);
   var data1 = {
     labels: ["1月", "2月", "3月", "4月", "5月"],
     datasets: [{
@@ -33,7 +35,7 @@ $(function () {
   };
   var doughnutPieData1 = {
     datasets: [{
-      data: [30, 40, 30],
+      data: RoundedPercentages,
       backgroundColor: [
         'rgba(255, 99, 132, 0.5)',
         'rgba(54, 162, 235, 0.5)',
@@ -51,15 +53,11 @@ $(function () {
         'rgba(255, 159, 64, 1)'
       ],
     }],
-    labels: [
-      '關注',
-      '興趣',
-      '購買',
-    ]
+    labels: CategoriesList
   };
   var doughnutPieData2 = {
     datasets: [{
-      data: [2, 4, 3, 1, 3],
+      data: [1,1,1,],
       backgroundColor: [
         'rgba(255, 99, 132, 0.5)',
         'rgba(54, 162, 235, 0.5)',
@@ -77,13 +75,121 @@ $(function () {
         'rgba(255, 159, 64, 1)'
       ],
     }],
-
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+      '電話推銷',
+      '廣告推銷',
+      '郵件行銷',
+    ]
+  };
+  var doughnutPieData3 = {
+    datasets: [{
+      data: [1,2,3,],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+        'rgba(255, 159, 64, 0.5)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+    }],
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+      '電話推銷',
+      '網路行銷',
+      '門對門推銷',
+    ]
+  };
+  var doughnutPieData4 = {
+    datasets: [{
+      data: [1,2,3,1],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+        'rgba(255, 159, 64, 0.5)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+    }],
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+      '門對門推銷',
+      '網路行銷',
+      '郵件行銷',
+      '廣告推銷',
+    ]
+  };
+  var doughnutPieData5 = {
+    datasets: [{
+      data: [1,2,3,],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+        'rgba(255, 159, 64, 0.5)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+    }],
     // These labels appear in the legend and in the tooltips when hovering different arcs
     labels: [
       '電話推銷',
       '網路行銷',
       '郵件行銷',
-      '門對門行銷',
+    ]
+  };
+  var doughnutPieData6 = {
+    datasets: [{
+      data: [1,2,3,5,4],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+        'rgba(255, 159, 64, 0.5)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+    }],
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+      '電話推銷',
+      '網路行銷',
+      '郵件行銷',
+      '門對門推銷',
       '廣告推銷',
     ]
   };
@@ -91,7 +197,7 @@ $(function () {
     labels: ["目標金額", "目前達成金額"],
     datasets: [{
       label: '# of Votes',
-      data: [50000, 25000],
+      data: [50000, 26000],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -108,7 +214,132 @@ $(function () {
         'rgba(153, 102, 255, 1)',
         'rgba(255, 159, 64, 1)'
       ],
-      borderWidth: 1,
+      borderWidth: 5,
+      fill: false
+    }]
+  };
+  var data4 = {
+    labels: ["目標金額", "目前達成金額"],
+    datasets: [{
+      label: '# of Votes',
+      data: [50000, 23000],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 5,
+      fill: false
+    }]
+  };
+  var data5 = {
+    labels: ["目標金額", "目前達成金額"],
+    datasets: [{
+      label: '# of Votes',
+      data: [50000, 0],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 5,
+      fill: false
+    }]
+  };
+  var data6 = {
+    labels: ["目標金額", "目前達成金額"],
+    datasets: [{
+      label: '# of Votes',
+      data: [50000, 0],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 5,
+      fill: false
+    }]
+  };
+  var data7 = {
+    labels: ["目標金額", "目前達成金額"],
+    datasets: [{
+      label: '# of Votes',
+      data: [50000, 0],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 5,
+      fill: false
+    }]
+  };
+  var data8 = {
+    labels: ["目標金額", "目前達成金額"],
+    datasets: [{
+      label: '# of Votes',
+      data: [120000, 8000],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 5,
       fill: false
     }]
   };
@@ -587,12 +818,89 @@ $(function () {
       options: doughnutPieOptions
     });
   }
+  if ($("#pieChart3").length) {
+    var pieChartCanvas3 = $("#pieChart3").get(0).getContext("2d");
+    var pieChart3 = new Chart(pieChartCanvas3, {
+      type: 'pie',
+      data: doughnutPieData3,
+      options: doughnutPieOptions
+    });
+  }
+  if ($("#pieChart4").length) {
+    var pieChartCanvas4 = $("#pieChart4").get(0).getContext("2d");
+    var pieChart4 = new Chart(pieChartCanvas4, {
+      type: 'pie',
+      data: doughnutPieData4,
+      options: doughnutPieOptions
+    });
+  }
+  if ($("#pieChart5").length) {
+    var pieChartCanvas5 = $("#pieChart5").get(0).getContext("2d");
+    var pieChart5 = new Chart(pieChartCanvas5, {
+      type: 'pie',
+      data: doughnutPieData5,
+      options: doughnutPieOptions
+    });
+  }
+  if ($("#pieChart6").length) {
+    var pieChartCanvas6 = $("#pieChart6").get(0).getContext("2d");
+    var pieChart6 = new Chart(pieChartCanvas6, {
+      type: 'pie',
+      data: doughnutPieData6,
+      options: doughnutPieOptions
+    });
+  }
   if ($("#barChart1").length) {
     var barChartCanvas1 = $("#barChart1").get(0).getContext("2d");
     // This will get the first returned node in the jQuery collection.
     var barChart1 = new Chart(barChartCanvas1, {
       type: 'bar',
       data: data3,
+      options: options
+    });
+  }
+  if ($("#barChart2").length) {
+    var barChartCanvas2 = $("#barChart2").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    var barChart2 = new Chart(barChartCanvas2, {
+      type: 'bar',
+      data: data4,
+      options: options
+    });
+  }
+  if ($("#barChart3").length) {
+    var barChartCanvas3 = $("#barChart3").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    var barChart3 = new Chart(barChartCanvas3, {
+      type: 'bar',
+      data: data5,
+      options: options
+    });
+  }
+  if ($("#barChart4").length) {
+    var barChartCanvas4 = $("#barChart4").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    var barChart4 = new Chart(barChartCanvas4, {
+      type: 'bar',
+      data: data6,
+      options: options
+    });
+  }
+  if ($("#barChart5").length) {
+    var barChartCanvas5 = $("#barChart5").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    var barChart5 = new Chart(barChartCanvas5, {
+      type: 'bar',
+      data: data7,
+      options: options
+    });
+  }
+  if ($("#barChart6").length) {
+    var barChartCanvas6 = $("#barChart6").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    var barChart6 = new Chart(barChartCanvas6, {
+      type: 'bar',
+      data: data8,
       options: options
     });
   }
