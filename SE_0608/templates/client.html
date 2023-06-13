@@ -21,6 +21,12 @@
 </head>
 
 <body>
+    <script>
+        var revenueAmountList = {{ revenue_amount_list|safe }};
+        var RoundedPercentages = {{ rounded_percentages|safe }};
+        var CategoriesList = {{ categories_list|safe }};
+    // 在这里使用 revenueAmountList 进行相关的 JavaScript 操作
+    </script>
     <div class="container-scroller">
         <div class="row p-0 m-0 proBanner" id="proBanner">
             <div class="col-md-12 p-0 m-0">
@@ -46,8 +52,8 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="../static/assets/images/dashboard-big.svg" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../static/assets/images/dashboard.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo" href="/index/"><img src="../static/assets/images/dashboard-big.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="/index/"><img src="../static/assets/images/dashboard.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -175,76 +181,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for m in member %}
                                             <tr>
                                                 <td class="py-1">
-                                                    <img src="../../assets/images/faces-clipart/pic-2.png"
+                                                    <img src="../static/assets/images/faces-clipart/pic-2.png"
                                                         alt="image" />
                                                 </td>
-                                                <td> 蔡小英 </td>
-                                                <td>txy</td>
-                                                <td>2023-01-01</td>
-                                                <td>0987654321</td>
-                                                <td>台南市</td>
-                                                <td>txy@gmail.com</td>
-                                                <td>銀</td>
-                                                <td>興趣</td>
+                                                <td> {{m.name}} </td>
+                                                <td>{{m.account}}</td>
+                                                <td>{{m.join_date}}</td>
+                                                <td>0{{m.phone}}</td>
+                                                <td>{{m.address}}</td>
+                                                <td>{{m.email}}</td>
+                                                <td>{{m.level}}</td>
+                                                <td>{{m.status}}</td>
                                             </tr>
-                                            <tr>
-                                                <td class="py-1">
-                                                    <img src="../../assets/images/faces-clipart/pic-2.png"
-                                                        alt="image" />
-                                                </td>
-                                                <td> 蔡小英 </td>
-                                                <td>txy</td>
-                                                <td>2023-01-01</td>
-                                                <td>0987654321</td>
-                                                <td>台南市</td>
-                                                <td>txy@gmail.com</td>
-                                                <td>銀</td>
-                                                <td>興趣</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="py-1">
-                                                    <img src="../../assets/images/faces-clipart/pic-2.png"
-                                                        alt="image" />
-                                                </td>
-                                                <td> 蔡小英 </td>
-                                                <td>txy</td>
-                                                <td>2023-01-01</td>
-                                                <td>0987654321</td>
-                                                <td>台南市</td>
-                                                <td>txy@gmail.com</td>
-                                                <td>銀</td>
-                                                <td>興趣</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="py-1">
-                                                    <img src="../../assets/images/faces-clipart/pic-2.png"
-                                                        alt="image" />
-                                                </td>
-                                                <td> 蔡小英 </td>
-                                                <td>txy</td>
-                                                <td>2023-01-01</td>
-                                                <td>0987654321</td>
-                                                <td>台南市</td>
-                                                <td>txy@gmail.com</td>
-                                                <td>銀</td>
-                                                <td>興趣</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="py-1">
-                                                    <img src="../../assets/images/faces-clipart/pic-2.png"
-                                                        alt="image" />
-                                                </td>
-                                                <td> 蔡小英 </td>
-                                                <td>txy</td>
-                                                <td>2023-01-01</td>
-                                                <td>0987654321</td>
-                                                <td>台南市</td>
-                                                <td>txy@gmail.com</td>
-                                                <td>銀</td>
-                                                <td>興趣</td>
-                                            </tr>
+                                            {% endfor %}
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -255,12 +208,12 @@
                         <div class="col-lg-4 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <form class="d-flex align-items-center h-100" action="#">
+                                    <form class="d-flex align-items-center h-100" action="/search/">
                                         <div class="input-group">
                                             <div class="input-group-prepend bg-transparent">
                                                 <i class="input-group-text border-0 mdi mdi-magnify text-primary"></i>
                                             </div>
-                                            <input type="text" class="form-control bg-dark border-0"
+                                            <input type="text" class="form-control bg-dark border-0" name = "member"
                                                 placeholder="搜尋會員">
                                         </div>
                                     </form>
@@ -270,7 +223,7 @@
                         <div class="col-lg-8 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h2>蔡小英的相關資料</h2>
+                                    <h2>{{ sname|default:"搜尋會員"}}的相關資料</h2>
                                 </div>
                             </div>
                         </div>
@@ -291,12 +244,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for sr1 in sr %}
                                             <tr>
-                                                <td>20230502</td>
-                                                <td>5<i class="mdi mdi-star"></i></td>
-                                                <td>服務很好</td>
+                                                <td>{{sr1.review_date}}</td>
+                                                <td>{{sr1.score}}<i class="mdi mdi-star"></i></td>
+                                                <td>{{sr1.review_content}}</td>
                                             </tr>
-                                            <tr>
+                                            {% endfor %}
+                                            {% comment %} <tr>
                                                 <td>20230503</td>
                                                 <td>4<i class="mdi mdi-star"></i></td>
                                                 <td>專業態度</td>
@@ -315,7 +270,7 @@
                                                 <td>20230506</td>
                                                 <td>1<i class="mdi mdi-star"></i></td>
                                                 <td>服務很好</td>
-                                            </tr>
+                                            </tr> {% endcomment %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -335,13 +290,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for esr1 in esr %}
                                             <tr>
-                                                <td>20230502</td>
-                                                <td>5<i class="mdi mdi-star"></i></td>
+                                                <td>{{esr1.review_date}}</td>
+                                                <td>{{esr1.score}}<i class="mdi mdi-star"></i></td>
                                                 <td>中壢店</td>
-                                                <td>服務很好</td>
+                                                <td>{{esr1.review_content}}</td>
                                             </tr>
-                                            <tr>
+                                            {% endfor %}
+                                            {% comment %} <tr>
                                                 <td>20230503</td>
                                                 <td>4<i class="mdi mdi-star"></i></td>
                                                 <td>中壢店</td>
@@ -364,7 +321,7 @@
                                                 <td>1<i class="mdi mdi-star"></i></td>
                                                 <td>中壢店</td>
                                                 <td>服務很好</td>
-                                            </tr>
+                                            </tr> {% endcomment %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -380,17 +337,29 @@
                                         <thead>
                                             <tr>
                                                 <th> 日期 </th>
-                                                <th> 商品名稱 </th>
+                                                <th> 商品序號 </th>
                                                 <th> 購買數量 </th>
                                                 <th> 單價 </th>
                                                 <th> 保固期限 </th>
                                                 <th> 付款方式 </th>
-                                                <th>服務銷售員</th>
+                                                <th>服務銷售員編號</th>
                                                 <th>總金額</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for d in saler %}
                                             <tr>
+                                                <td>{{d.sales_date}}</td>
+                                                <td> {{d.product_id}} </td>
+                                                <td>{{d.sales_quantity}}</td>
+                                                <td>{{d.product_unit_price}}</td>
+                                                <td>{{d.warranty_period}}</td>
+                                                <td>{{d.payment_method}}</td>
+                                                <td>{{d.employee_id}}</td>
+                                                <td>{{d.total_amount}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% comment %} <tr>
                                                 <td>20230601</td>
                                                 <td> 按摩椅A </td>
                                                 <td>1</td>
@@ -409,17 +378,7 @@
                                                 <td>信用卡</td>
                                                 <td>林庭妤</td>
                                                 <td>10000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>20230601</td>
-                                                <td> 按摩椅A </td>
-                                                <td>1</td>
-                                                <td>10000</td>
-                                                <td>1年</td>
-                                                <td>信用卡</td>
-                                                <td>林庭妤</td>
-                                                <td>10000</td>
-                                            </tr>
+                                            </tr> {% endcomment %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -439,13 +398,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for p in pmc %}
                                             <tr>
-                                                <td>20230502</td>
-                                                <td>1</td>
-                                                <td>60</td>
-                                                <td>180</td>
+                                                <td>{{p.usage_date}}</td>
+                                                <td>{{p.chair_id}}</td>
+                                                <td>{{p.usage_time}}</td>
+                                                <td>{{p.fee}}</td>
                                             </tr>
-                                            <tr>
+                                            {% endfor %}
+                                            {% comment %} <tr>
                                                 <td>20230503</td>
                                                 <td>2</td>
                                                 <td>45</td>
@@ -468,7 +429,7 @@
                                                 <td>1</td>
                                                 <td>35</td>
                                                 <td>105</td>
-                                            </tr>
+                                            </tr> {% endcomment %}
                                         </tbody>
                                     </table>
                                 </div>

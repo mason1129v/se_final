@@ -46,8 +46,8 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="../static/assets/images/dashboard-big.svg" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../static/assets/images/dashboard.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo" href="/index/"><img src="../static/assets/images/dashboard-big.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="/index/"><img src="../static/assets/images/dashboard.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -174,22 +174,24 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for emp in employee %}
                                             <tr>
                                                 <td class="py-1">
                                                     <img src="../static/assets/images/faces-clipart/pic-2.png"
                                                         alt="image" />
                                                 </td>
-                                                <td> 林庭妤 </td>
-                                                <td>銷售</td>
-                                                <td>2023-01-01</td>
-                                                <td>0987654321</td>
-                                                <td>基隆市</td>
-                                                <td>doris@gmail.com</td>
+                                                <td> {{emp.name}} </td>
+                                                <td>{{emp.position}}</td>
+                                                <td>{{emp.hire_date}}</td>
+                                                <td>0{{emp.phone}}</td>
+                                                <td>{{emp.address}}</td>
+                                                <td>{{emp.email}}</td>
                                                 <td><a href="#s1"><button type="button"
                                                             class="btn btn-gradient-primary btn-fw">詳細資訊</button></a>
                                                 </td>
                                             </tr>
-                                            <tr>
+                                            {% endfor %}
+                                            {% comment %} <tr>
                                                 <td class="py-1">
                                                     <img src="../static/assets/images/faces-clipart/pic-1.png"
                                                         alt="image" />
@@ -233,24 +235,31 @@
                                                 <td><a href="#s4"><button type="button"
                                                             class="btn btn-gradient-primary btn-fw">詳細資訊</button></a>
                                                 </td>
-                                            </tr>
+                                            </tr> {% endcomment %}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <script>
+                        var revenueAmountList = {{ revenue_amount_list|safe }};
+                        var RoundedPercentages = {{ rounded_percentages|safe }};
+                        var CategoriesList = {{ categories_list|safe }};
+                    // 在这里使用 revenueAmountList 进行相关的 JavaScript 操作
+                    </script>
+                      
                     <div class="row" id="s1">
                         <div class="col-md-3 stretch-card grid-margin">
                             <div class="card bg-gradient-danger card-img-holder text-white">
                                 <div class="card-body">
                                     <img src="../static/assets/images/dashboard/circle.svg" class="card-img-absolute"
                                         alt="circle-image" />
-                                    <h4 class="font-weight-normal mb-3">銷售 <i
+                                    <h4 class="font-weight-normal mb-3">{{employee1.position}} <i
                                             class="mdi mdi-account-outline mdi-24px float-right"></i>
                                     </h4>
-                                    <h2 class="mb-5">林庭妤</h2>
-                                    <h3 class="mb-5">4.5<i class="mdi mdi-star"></i>
+                                    <h2 class="mb-5">{{employee1.name}}</h2>
+                                    <h3 class="mb-5">{{total_score1}}<i class="mdi mdi-star"></i>
                                     </h3>
                                 </div>
                             </div>
@@ -271,48 +280,27 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for e in e1 %}
                                             <tr>
-                                                <td> 20230501 </td>
-                                                <td> 1 </td>
-                                                <td> 10000 </td>
-                                                <td> 10000 </td>
+                                                <td> {{e.sales_date}} </td>
+                                                <td> {{e.sales_quantity}} </td>
+                                                <td> {{e.product_unit_price}} </td>
+                                                <td> {{e.total_amount}} </td>
                                             </tr>
-                                            <tr>
-                                                <td> 20230502 </td>
-                                                <td> 1 </td>
-                                                <td> 8000 </td>
-                                                <td> 8000 </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 20230507 </td>
-                                                <td> 2 </td>
-                                                <td> 6000 </td>
-                                                <td> 12000 </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 20230514 </td>
-                                                <td> 1 </td>
-                                                <td> 15000 </td>
-                                                <td> 15000 </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 20230520 </td>
-                                                <td> 1 </td>
-                                                <td> 10000 </td>
-                                                <td> 10000 </td>
-                                            </tr>
+                                            {% endfor %}
                                             <tr class="text-primary">
                                                 <td> 本月總計 </td>
-                                                <td> 6 </td>
+                                                <td> 3 </td>
                                                 <td>  </td>
-                                                <td> 55000 </td>
-                                            </tr>
+                                                <td> 26000 </td>
+                                            </tr> 
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+          
                     <div class="row">
                         <div class="col-lg-4 grid-margin stretch-card">
                             <div class="card">
@@ -327,31 +315,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for s in s1 %}
                                             <tr>
-                                                <td>20230502</td>
-                                                <td>5<i class="mdi mdi-star"></i></td>
-                                                <td>服務很好</td>
+                                                <td>{{s.review_date}}</td>
+                                                <td>{{s.score}}<i class="mdi mdi-star"></i></td>
+                                                <td>{{s.review_content}}</td>
                                             </tr>
-                                            <tr>
-                                                <td>20230503</td>
-                                                <td>4<i class="mdi mdi-star"></i></td>
-                                                <td>專業態度</td>
-                                            </tr>
-                                            <tr>
-                                                <td>20230504</td>
-                                                <td>3<i class="mdi mdi-star"></i></td>
-                                                <td>有待改善</td>
-                                            </tr>
-                                            <tr>
-                                                <td>20230505</td>
-                                                <td>2<i class="mdi mdi-star"></i></td>
-                                                <td>不太滿意</td>
-                                            </tr>
-                                            <tr>
-                                                <td>20230506</td>
-                                                <td>1<i class="mdi mdi-star"></i></td>
-                                                <td>服務很好</td>
-                                            </tr>
+                                            {% endfor %}            
                                         </tbody>
                                     </table>
                                 </div>
@@ -360,22 +330,422 @@
                         <div class="col-md-4 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">推銷手法比例</h4>
+                                    <div class="clearfix"> 
+                                        <h4 class="card-title">推銷手法比例</h4>
+                                    </div>
                                     <canvas id="pieChart2"></canvas>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="col-lg-4 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">本月銷售目標</h4>
-                                    <canvas id="barChart1" style="height:230px"></canvas>
-                                    <h4>達成進度:50%</h4>
+                                    <canvas id="barChart1" style="height:180px"></canvas>
+                                    <h4>達成進度:52%</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row" id="s2">
+                        <div class="col-md-3 stretch-card grid-margin">
+                            <div class="card bg-gradient-danger card-img-holder text-white">
+                                <div class="card-body">
+                                    <img src="../static/assets/images/dashboard/circle.svg" class="card-img-absolute"
+                                        alt="circle-image" />
+                                    <h4 class="font-weight-normal mb-3">{{employee2.position}} <i
+                                            class="mdi mdi-account-outline mdi-24px float-right"></i>
+                                    </h4>
+                                    <h2 class="mb-5">{{employee2.name}}</h2>
+                                    <h3 class="mb-5">{{total_score2}}<i class="mdi mdi-star"></i>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">銷售紀錄</h4>
+                                    <p class="card-description"> 最近五筆
+                                    </p>
+                                    <table class="table table-dark">
+                                        <thead>
+                                            <tr>
+                                                <th> 日期 </th>
+                                                <th> 銷售數量 </th>
+                                                <th> 商品單價 </th>
+                                                <th> 總金額 </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for e in e2 %}
+                                            <tr>
+                                                <td> {{e.sales_date}} </td>
+                                                <td> {{e.sales_quantity}} </td>
+                                                <td> {{e.product_unit_price}} </td>
+                                                <td> {{e.total_amount}} </td>
+                                            </tr>
+                                            {% endfor %}
+                                            <tr class="text-primary">
+                                                <td> 本月總計 </td>
+                                                <td> 2 </td>
+                                                <td>  </td>
+                                                <td> 23000 </td>
+                                            </tr> 
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
+                    <div class="row">
+                        <div class="col-lg-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">服務評價</h4>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>日期</th>
+                                                <th>評分</th>
+                                                <th>評價內容</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for s in s2 %}
+                                            <tr>
+                                                <td>{{s.review_date}}</td>
+                                                <td>{{s.score}}<i class="mdi mdi-star"></i></td>
+                                                <td>{{s.review_content}}</td>
+                                            </tr>
+                                            {% endfor %}            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix"> 
+                                        <h4 class="card-title">推銷手法比例</h4>
+                                    </div>
+                                    <canvas id="pieChart3"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">本月銷售目標</h4>
+                                    <canvas id="barChart2" style="height:180px"></canvas>
+                                    <h4>達成進度:52%</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="s3">
+                        <div class="col-md-3 stretch-card grid-margin">
+                            <div class="card bg-gradient-danger card-img-holder text-white">
+                                <div class="card-body">
+                                    <img src="../static/assets/images/dashboard/circle.svg" class="card-img-absolute"
+                                        alt="circle-image" />
+                                    <h4 class="font-weight-normal mb-3">{{employee3.position}} <i
+                                            class="mdi mdi-account-outline mdi-24px float-right"></i>
+                                    </h4>
+                                    <h2 class="mb-5">{{employee3.name}}</h2>
+                                    <h3 class="mb-5">{{total_score3}}<i class="mdi mdi-star"></i>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">銷售紀錄</h4>
+                                    <p class="card-description"> 最近五筆
+                                    </p>
+                                    <table class="table table-dark">
+                                        <thead>
+                                            <tr>
+                                                <th> 日期 </th>
+                                                <th> 銷售數量 </th>
+                                                <th> 商品單價 </th>
+                                                <th> 總金額 </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for e in e3 %}
+                                            <tr>
+                                                <td> {{e.sales_date}} </td>
+                                                <td> {{e.sales_quantity}} </td>
+                                                <td> {{e.product_unit_price}} </td>
+                                                <td> {{e.total_amount}} </td>
+                                            </tr>
+                                            {% endfor %}
+                                            <tr class="text-primary">
+                                                <td> 本月總計 </td>
+                                                <td> 0 </td>
+                                                <td>  </td>
+                                                <td> 0 </td>
+                                            </tr> 
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
+                    <div class="row">
+                        <div class="col-lg-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">服務評價</h4>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>日期</th>
+                                                <th>評分</th>
+                                                <th>評價內容</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for s in s3 %}
+                                            <tr>
+                                                <td>{{s.review_date}}</td>
+                                                <td>{{s.score}}<i class="mdi mdi-star"></i></td>
+                                                <td>{{s.review_content}}</td>
+                                            </tr>
+                                            {% endfor %}            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix"> 
+                                        <h4 class="card-title">推銷手法比例</h4>
+                                    </div>
+                                    <canvas id="pieChart6"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">本月銷售目標</h4>
+                                    <canvas id="barChart3" style="height:180px"></canvas>
+                                    <h4>達成進度:52%</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="s4">
+                        <div class="col-md-3 stretch-card grid-margin">
+                            <div class="card bg-gradient-danger card-img-holder text-white">
+                                <div class="card-body">
+                                    <img src="../static/assets/images/dashboard/circle.svg" class="card-img-absolute"
+                                        alt="circle-image" />
+                                    <h4 class="font-weight-normal mb-3">{{employee4.position}} <i
+                                            class="mdi mdi-account-outline mdi-24px float-right"></i>
+                                    </h4>
+                                    <h2 class="mb-5">{{employee4.name}}</h2>
+                                    <h3 class="mb-5">{{total_score4}}<i class="mdi mdi-star"></i>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">銷售紀錄</h4>
+                                    <p class="card-description"> 最近五筆
+                                    </p>
+                                    <table class="table table-dark">
+                                        <thead>
+                                            <tr>
+                                                <th> 日期 </th>
+                                                <th> 銷售數量 </th>
+                                                <th> 商品單價 </th>
+                                                <th> 總金額 </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for e in e4 %}
+                                            <tr>
+                                                <td> {{e.sales_date}} </td>
+                                                <td> {{e.sales_quantity}} </td>
+                                                <td> {{e.product_unit_price}} </td>
+                                                <td> {{e.total_amount}} </td>
+                                            </tr>
+                                            {% endfor %}
+                                            <tr class="text-primary">
+                                                <td> 本月總計 </td>
+                                                <td> 0 </td>
+                                                <td>  </td>
+                                                <td> 0 </td>
+                                            </tr> 
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
+                    <div class="row">
+                        <div class="col-lg-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">服務評價</h4>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>日期</th>
+                                                <th>評分</th>
+                                                <th>評價內容</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for s in s4 %}
+                                            <tr>
+                                                <td>{{s.review_date}}</td>
+                                                <td>{{s.score}}<i class="mdi mdi-star"></i></td>
+                                                <td>{{s.review_content}}</td>
+                                            </tr>
+                                            {% endfor %}            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix"> 
+                                        <h4 class="card-title">推銷手法比例</h4>
+                                    </div>
+                                    <canvas id="pieChart4"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">本月銷售目標</h4>
+                                    <canvas id="barChart4" style="height:180px"></canvas>
+                                    <h4>達成進度:52%</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="s5">
+                        <div class="col-md-3 stretch-card grid-margin">
+                            <div class="card bg-gradient-danger card-img-holder text-white">
+                                <div class="card-body">
+                                    <img src="../static/assets/images/dashboard/circle.svg" class="card-img-absolute"
+                                        alt="circle-image" />
+                                    <h4 class="font-weight-normal mb-3">{{employee5.position}} <i
+                                            class="mdi mdi-account-outline mdi-24px float-right"></i>
+                                    </h4>
+                                    <h2 class="mb-5">{{employee5.name}}</h2>
+                                    <h3 class="mb-5">{{total_score5}}<i class="mdi mdi-star"></i>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">銷售紀錄</h4>
+                                    <p class="card-description"> 最近五筆
+                                    </p>
+                                    <table class="table table-dark">
+                                        <thead>
+                                            <tr>
+                                                <th> 日期 </th>
+                                                <th> 銷售數量 </th>
+                                                <th> 商品單價 </th>
+                                                <th> 總金額 </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for e in e5 %}
+                                            <tr>
+                                                <td> {{e.sales_date}} </td>
+                                                <td> {{e.sales_quantity}} </td>
+                                                <td> {{e.product_unit_price}} </td>
+                                                <td> {{e.total_amount}} </td>
+                                            </tr>
+                                            {% endfor %}
+                                            <tr class="text-primary">
+                                                <td> 本月總計 </td>
+                                                <td> 0 </td>
+                                                <td>  </td>
+                                                <td> 0 </td>
+                                            </tr> 
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
+                    <div class="row">
+                        <div class="col-lg-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">服務評價</h4>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>日期</th>
+                                                <th>評分</th>
+                                                <th>評價內容</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for s in s5 %}
+                                            <tr>
+                                                <td>{{s.review_date}}</td>
+                                                <td>{{s.score}}<i class="mdi mdi-star"></i></td>
+                                                <td>{{s.review_content}}</td>
+                                            </tr>
+                                            {% endfor %}            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix"> 
+                                        <h4 class="card-title">推銷手法比例</h4>
+                                    </div>
+                                    <canvas id="pieChart5"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">本月銷售目標</h4>
+                                    <canvas id="barChart5" style="height:180px"></canvas>
+                                    <h4>達成進度:52%</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    {% comment %} <div class="row" id="s2">
                         <div class="col-md-3 stretch-card grid-margin">
                             <div class="card bg-gradient-danger card-img-holder text-white">
                                 <div class="card-body">
@@ -779,8 +1149,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div>{% endcomment %}
+                </div> 
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
                 <footer class="footer">

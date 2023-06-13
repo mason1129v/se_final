@@ -46,8 +46,8 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="../static/assets/images/dashboard-big.svg" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../static/assets/images/dashboard.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo" href="/index/"><img src="../static/assets/images/dashboard-big.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="/index/"><img src="../static/assets/images/dashboard.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -162,6 +162,7 @@
                                     <h4 class="card-title">按摩椅(商品)總覽</h4>
                                     <table class="table table-striped">
                                         <thead>
+                                           
                                             <tr>
                                                 <th> # </th>
                                                 <th> 商品名稱 </th>
@@ -172,7 +173,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for p in product %}
                                             <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td> {{ p.name }} </td>
+                                                <td>{{ p.description }}</td>
+                                                <td>{{ p.price }}</td>
+                                                <td>{{ p.stock }}</td>
+                                                <td>{{ p.category }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% comment %} <tr>
                                                 <td>1</td>
                                                 <td> 按摩椅A </td>
                                                 <td>...</td>
@@ -235,15 +246,7 @@
                                                 <td>10000</td>
                                                 <td>10</td>
                                                 <td>按摩椅</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td> 按摩椅A </td>
-                                                <td>...</td>
-                                                <td>10000</td>
-                                                <td>10</td>
-                                                <td>按摩椅</td>
-                                            </tr>
+                                            </tr> {% endcomment %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -266,7 +269,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for pr in PR %}
                                             <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ pr.purchase_date}}</td>
+                                                <td>{{ pr.purchase_quantity}}</td>
+                                                <td>{{ pr.purchase_unit_price}}</td>
+                                                <td>{{ pr.total_price}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% comment %} <tr>
                                                 <td>1</td>
                                                 <td>20230601</td>
                                                 <td> 3 </td>
@@ -293,14 +305,7 @@
                                                 <td> 3 </td>
                                                 <td>10000</td>
                                                 <td>30000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>20230601</td>
-                                                <td> 3 </td>
-                                                <td>10000</td>
-                                                <td>30000</td>
-                                            </tr>
+                                            </tr> {% endcomment %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -314,18 +319,31 @@
                                         <thead>
                                             <tr>
                                                 <th> 日期 </th>
-                                                <th> 商品名稱 </th>
+                                                <th> 商品編號 </th>
                                                 <th> 購買數量 </th>
                                                 <th> 單價 </th>
                                                 <th> 保固期限 </th>
                                                 <th> 付款方式 </th>
-                                                <th>服務銷售員</th>
+                                                <th>服務銷售員代號</th>
                                                 <th>購買客戶帳號</th>
                                                 <th>總金額</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for sr in SR %}
                                             <tr>
+                                                <td>{{ sr.sales_date }}</td>
+                                                <td>{{ sr.product_id }}  </td>
+                                                <td>{{ sr.sales_quantity }}</td>
+                                                <td>{{ sr.product_unit_price }}</td>
+                                                <td>{{ sr.warranty_period }}</td>
+                                                <td>{{ sr.payment_method }}</td>
+                                                <td>{{ sr.employee_id }}</td>
+                                                <td>{{ sr.member_id }}</td>
+                                                <td>{{ sr.total_amount }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% comment %} <tr>
                                                 <td>20230601</td>
                                                 <td> 按摩椅A </td>
                                                 <td>1</td>
@@ -346,18 +364,7 @@
                                                 <td>林庭妤</td>
                                                 <td>hello</td>
                                                 <td>10000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>20230601</td>
-                                                <td> 按摩椅A </td>
-                                                <td>1</td>
-                                                <td>10000</td>
-                                                <td>1年</td>
-                                                <td>信用卡</td>
-                                                <td>林庭妤</td>
-                                                <td>hello</td>
-                                                <td>10000</td>
-                                            </tr>
+                                            </tr> {% endcomment %}
                                         </tbody>
                                     </table>
                                 </div>
