@@ -39,9 +39,6 @@ class Member(models.Model):
         verbose_name = "會員"
         verbose_name_plural = "會員"
 
-    def __str__(self):
-        return self.name
-
 
 class Employee(models.Model):
     employee_id = models.AutoField(primary_key=True)
@@ -58,13 +55,12 @@ class Employee(models.Model):
     phone = models.CharField(max_length=20)
     email = models.EmailField()
     store_id = models.IntegerField()
+    monthly_target = models.IntegerField(null=True)
 
     class Meta:
         verbose_name = "員工"
         verbose_name_plural = "員工"
 
-    def __str__(self):
-        return self.name
 
 
 class Product(models.Model):
@@ -135,9 +131,6 @@ class SalesRecord(models.Model):
         verbose_name = "銷售紀錄"
         verbose_name_plural = "銷售紀錄"
 
-    def __str__(self):
-        return f"Sales Record ID: {self.sales_record_id}"
-
 
 class SalesTechnique(models.Model):
     sales_technique_id = models.AutoField(primary_key=True)
@@ -164,9 +157,6 @@ class StoreReview(models.Model):
         verbose_name = "店家評價"
         verbose_name_plural = "店家評價"
 
-    def __str__(self):
-        return f"Review ID: {self.sreview_id}"
-
 
 class EmployeeServiceReview(models.Model):
     ereview_id = models.AutoField(primary_key=True)
@@ -180,9 +170,6 @@ class EmployeeServiceReview(models.Model):
         verbose_name = "服務評價"
         verbose_name_plural = "服務評價"
 
-    def __str__(self):
-        return f"Review ID: {self.ereview_id}"
-
 
 class StoreSalesTarget(models.Model):
     sales_target_id = models.AutoField(primary_key=True)
@@ -195,9 +182,6 @@ class StoreSalesTarget(models.Model):
     class Meta:
         verbose_name = "店家業績目標"
         verbose_name_plural = "店家業績目標"
-
-    def __str__(self):
-        return f"Sales Target ID: {self.sales_target_id}"
 
 
 class EmployeeSalesTarget(models.Model):
@@ -275,8 +259,6 @@ class PublicMassageChairLocation(models.Model):
         verbose_name = "公共按摩椅服務據點"
         verbose_name_plural = "公共按摩椅服務據點"
 
-    def __str__(self):
-        return self.location_name
 
 
 class RevenueRecord(models.Model):
@@ -289,6 +271,4 @@ class RevenueRecord(models.Model):
     class Meta:
         verbose_name = "營收紀錄"
         verbose_name_plural = "營收紀錄"
-    def __str__(self):
-        return f"Record ID: {self.record_id}"
-
+   
