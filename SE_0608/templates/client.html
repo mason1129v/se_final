@@ -127,8 +127,8 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/client/">
-                <span class="menu-title">客戶</span>
-                <i class="mdi mdi-account-multiple-outline menu-icon"></i>
+                <span class="menu-title" style="color:#9a55ff;">客戶</span>
+                <i class="mdi mdi-account-multiple-outline menu-icon" style="color:#9a55ff;"></i>
                 </a>
             </li>
             <li class="nav-item">
@@ -229,7 +229,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 grid-margin stretch-card">
+                        <div class="col-lg-4 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">服務評價</h4>
@@ -276,59 +276,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">店家評價</h4>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>日期</th>
-                                                <th>評分</th>
-                                                <th>評價店家</th>
-                                                <th>評價內容</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for esr1 in esr %}
-                                            <tr>
-                                                <td>{{esr1.review_date}}</td>
-                                                <td>{{esr1.score}}<i class="mdi mdi-star"></i></td>
-                                                <td>中壢店</td>
-                                                <td>{{esr1.review_content}}</td>
-                                            </tr>
-                                            {% endfor %}
-                                            {% comment %} <tr>
-                                                <td>20230503</td>
-                                                <td>4<i class="mdi mdi-star"></i></td>
-                                                <td>中壢店</td>
-                                                <td>專業態度</td>
-                                            </tr>
-                                            <tr>
-                                                <td>20230504</td>
-                                                <td>3<i class="mdi mdi-star"></i></td>
-                                                <td>中壢店</td>
-                                                <td>有待改善</td>
-                                            </tr>
-                                            <tr>
-                                                <td>20230505</td>
-                                                <td>2<i class="mdi mdi-star"></i></td>
-                                                <td>中壢店</td>
-                                                <td>不太滿意</td>
-                                            </tr>
-                                            <tr>
-                                                <td>20230506</td>
-                                                <td>1<i class="mdi mdi-star"></i></td>
-                                                <td>中壢店</td>
-                                                <td>服務很好</td>
-                                            </tr> {% endcomment %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-8 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
@@ -384,7 +331,61 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 grid-margin stretch-card">
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">店家評價</h4>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>日期</th>
+                                                <th>評分</th>
+                                                <th>評價店家</th>
+                                                <th>評價內容</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for esr1 in esr %}
+                                            <tr>
+                                                <td>{{esr1.review_date}}</td>
+                                                <td>{{esr1.score}}<i class="mdi mdi-star"></i></td>
+                                                <td>中壢店</td>
+                                                <td>{{esr1.review_content}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% comment %} <tr>
+                                                <td>20230503</td>
+                                                <td>4<i class="mdi mdi-star"></i></td>
+                                                <td>中壢店</td>
+                                                <td>專業態度</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20230504</td>
+                                                <td>3<i class="mdi mdi-star"></i></td>
+                                                <td>中壢店</td>
+                                                <td>有待改善</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20230505</td>
+                                                <td>2<i class="mdi mdi-star"></i></td>
+                                                <td>中壢店</td>
+                                                <td>不太滿意</td>
+                                            </tr>
+                                            <tr>
+                                                <td>20230506</td>
+                                                <td>1<i class="mdi mdi-star"></i></td>
+                                                <td>中壢店</td>
+                                                <td>服務很好</td>
+                                            </tr> {% endcomment %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">公共按摩椅使用紀錄</h4>

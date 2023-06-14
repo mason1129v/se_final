@@ -133,8 +133,8 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/product_mc/">
-                <span class="menu-title">按摩椅(商品)</span>
-                <i class="mdi mdi-script menu-icon"></i>
+                <span class="menu-title" style="color:#9a55ff;">按摩椅(商品)</span>
+                <i class="mdi mdi-script menu-icon" style="color:#9a55ff;"></i>
                 </a>
             </li>
             <li class="nav-item">
@@ -162,7 +162,6 @@
                                     <h4 class="card-title">按摩椅(商品)總覽</h4>
                                     <table class="table table-striped">
                                         <thead>
-                                           
                                             <tr>
                                                 <th> # </th>
                                                 <th> 商品名稱 </th>
@@ -254,64 +253,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-5 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">進貨紀錄</h4>
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th> # </th>
-                                                <th> 日期 </th>
-                                                <th> 進貨數量 </th>
-                                                <th> 進貨單價 </th>
-                                                <th>總金額</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for pr in PR %}
-                                            <tr>
-                                                <td>{{ forloop.counter }}</td>
-                                                <td>{{ pr.purchase_date}}</td>
-                                                <td>{{ pr.purchase_quantity}}</td>
-                                                <td>{{ pr.purchase_unit_price}}</td>
-                                                <td>{{ pr.total_price}}</td>
-                                            </tr>
-                                            {% endfor %}
-                                            {% comment %} <tr>
-                                                <td>1</td>
-                                                <td>20230601</td>
-                                                <td> 3 </td>
-                                                <td>10000</td>
-                                                <td>30000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>20230601</td>
-                                                <td> 3 </td>
-                                                <td>10000</td>
-                                                <td>30000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>20230601</td>
-                                                <td> 3 </td>
-                                                <td>10000</td>
-                                                <td>30000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>20230601</td>
-                                                <td> 3 </td>
-                                                <td>10000</td>
-                                                <td>30000</td>
-                                            </tr> {% endcomment %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 grid-margin stretch-card">
+                        <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">銷售紀錄</h4>
@@ -364,6 +306,65 @@
                                                 <td>林庭妤</td>
                                                 <td>hello</td>
                                                 <td>10000</td>
+                                            </tr> {% endcomment %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">進貨紀錄</h4>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th> # </th>
+                                                <th> 日期 </th>
+                                                <th> 進貨數量 </th>
+                                                <th> 進貨單價 </th>
+                                                <th>總金額</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for pr in PR %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ pr.purchase_date}}</td>
+                                                <td>{{ pr.purchase_quantity}}</td>
+                                                <td>{{ pr.purchase_unit_price}}</td>
+                                                <td>{{ pr.total_price}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% comment %} <tr>
+                                                <td>1</td>
+                                                <td>20230601</td>
+                                                <td> 3 </td>
+                                                <td>10000</td>
+                                                <td>30000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>20230601</td>
+                                                <td> 3 </td>
+                                                <td>10000</td>
+                                                <td>30000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>20230601</td>
+                                                <td> 3 </td>
+                                                <td>10000</td>
+                                                <td>30000</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>20230601</td>
+                                                <td> 3 </td>
+                                                <td>10000</td>
+                                                <td>30000</td>
                                             </tr> {% endcomment %}
                                         </tbody>
                                     </table>
